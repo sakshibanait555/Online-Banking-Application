@@ -1,0 +1,29 @@
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String username;
+    private String password;
+    // Getters and setters
+}
+
+@Entity
+public class Account {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String accountNumber;
+    private double balance;
+    // Getters and setters
+}
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findByUsername(String username);
+}
+
+@Repository
+public interface AccountRepository extends JpaRepository<Account, Long> {
+    Account findByAccountNumber(String accountNumber);
+}

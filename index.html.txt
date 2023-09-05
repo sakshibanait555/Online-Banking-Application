@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Banking</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Online Banking</h1>
+    <div id="user-registration">
+        <h2>User Registration</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="registerUser()">Register</button>
+    </div>
+    <div id="account-management">
+        <h2>Account Management</h2>
+        <input type="text" id="account-number" placeholder="Account Number">
+        <button onclick="checkBalance()">Check Balance</button>
+    </div>
+    <div id="result"></div>
+    <script src="script.js"></script>
+</body>
+</html>

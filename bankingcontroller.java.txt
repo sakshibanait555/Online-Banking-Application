@@ -1,0 +1,30 @@
+@RestController
+@RequestMapping("/api")
+public class BankingController {
+    
+    @Autowired
+    private UserRepository userRepository;
+    
+    @Autowired
+    private AccountRepository accountRepository;
+
+    @PostMapping("/register")
+    public ResponseEntity<String> registerUser(@RequestBody User user) {
+        // Implement user registration logic, including password hashing and validation
+        
+        userRepository.save(user);
+        return ResponseEntity.ok("{\"message\": \"User registered successfully\"}");
+    }
+
+    @GetMapping("/accounts/{accountNumber}")
+    public ResponseEntity<Account> getAccountBalance(@PathVariable String accountNumber) {
+        // Implement logic to retrieve the account balance
+        Account account = accountRepository.findByAccountNumber(accountNumber);
+        
+        if (account != null) {
+            return ResponseEntity.ok(account);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+}

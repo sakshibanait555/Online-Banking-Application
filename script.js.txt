@@ -1,0 +1,34 @@
+function registerUser() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    
+    // Send a POST request to the Spring Boot backend for user registration
+    fetch('/api/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("result").innerText = data.message;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+function checkBalance() {
+    const accountNumber = document.getElementById("account-number").value;
+    
+    // Send a GET request to the Spring Boot backend to check the account balance
+    fetch(`/api/accounts/${accountNumber}`)
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("result").innerText = `Account Balance: $${data.balance}`;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
